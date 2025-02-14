@@ -3,50 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strengths Assessment 2</title>
+    <title>Strengths Assessment</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
             margin: 0;
             padding: 0;
             text-align: center;
-            color: #333;
         }
 
+        /* Container */
         .container {
-            background: white;
-            max-width: 800px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
             margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
-            overflow-y: auto;
-            max-height: 85vh;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1s ease-in-out;
         }
 
         h1 {
             font-size: 36px;
-            margin-bottom: 10px;
-            color: #2c3e50;
+            margin-bottom: 20px;
+            color: #f8f9fa;
         }
 
+        /* Question Cards */
         .question {
-            margin: 20px 0;
-            font-size: 20px;
-            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
             text-align: left;
+            transition: transform 0.2s;
         }
 
-        .options {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        .question:hover {
+            transform: scale(1.02);
         }
 
         .options label {
+            display: block;
             font-size: 18px;
-            margin: 8px 0;
+            margin: 10px 0;
             cursor: pointer;
         }
 
@@ -54,27 +58,28 @@
             width: 100%;
         }
 
+        /* Submit Button */
         button {
             font-size: 20px;
             padding: 15px 30px;
-            background-color: #28a745;
+            background-color: #ffb400;
             border: none;
-            color: white;
+            color: black;
             cursor: pointer;
-            border-radius: 5px;
-            margin-top: 30px;
-            transition: 0.3s;
-            width: 100%;
+            border-radius: 8px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: bold;
         }
 
         button:hover {
-            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
         }
 
-        .scrollable {
-            max-height: 75vh;
-            overflow-y: auto;
-            padding-right: 10px;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
     </style>
@@ -82,12 +87,12 @@
 <body>
 
     <div class="container">
-        <h1>Strengths Assessment 2</h1>
+        <h1>Strengths Assessment</h1>
 
-        <form id="assessmentForm" class="scrollable">
+        <form id="assessmentForm">
             
-            <!-- 10 Questions -->
-            
+            <!-- 10 Stylish Questions -->
+
             <div class="question">
                 <p>1. How do you approach problem-solving?</p>
                 <div class="options">
@@ -107,8 +112,71 @@
             </div>
 
             <div class="question">
-                <p>3. How comfortable are you with taking risks?</p>
+                <p>3. How comfortable are you with taking risks? (1 = Low, 5 = High)</p>
                 <input type="range" name="q3" min="1" max="5">
+            </div>
+
+            <div class="question">
+                <p>4. What best describes your leadership style?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="Directive"> I give clear instructions</label>
+                    <label><input type="radio" name="q4" value="Supportive"> I encourage my team</label>
+                    <label><input type="radio" name="q4" value="Hands-off"> I let people work independently</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. How do you make decisions?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="Analytical"> I rely on data</label>
+                    <label><input type="radio" name="q5" value="Intuitive"> I trust my instincts</label>
+                    <label><input type="radio" name="q5" value="Collaborative"> I discuss with others first</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>6. How do you handle failure?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="Resilient"> I learn and try again</label>
+                    <label><input type="radio" name="q6" value="Cautious"> I avoid similar risks</label>
+                    <label><input type="radio" name="q6" value="Motivated"> I work even harder</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>7. What motivates you the most?</p>
+                <div class="options">
+                    <label><input type="radio" name="q7" value="Achievement"> Reaching my goals</label>
+                    <label><input type="radio" name="q7" value="Connection"> Building relationships</label>
+                    <label><input type="radio" name="q7" value="Curiosity"> Learning new things</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>8. How do you prefer to work under pressure?</p>
+                <div class="options">
+                    <label><input type="radio" name="q8" value="Methodical"> I stay calm and plan</label>
+                    <label><input type="radio" name="q8" value="Adaptive"> I adjust as needed</label>
+                    <label><input type="radio" name="q8" value="Energetic"> I thrive under pressure</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>9. How do you feel about learning new skills?</p>
+                <div class="options">
+                    <label><input type="radio" name="q9" value="Eager"> I love learning new things</label>
+                    <label><input type="radio" name="q9" value="Neutral"> I learn when necessary</label>
+                    <label><input type="radio" name="q9" value="Reluctant"> I prefer to stick to what I know</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>10. What best describes your communication style?</p>
+                <div class="options">
+                    <label><input type="radio" name="q10" value="Direct"> I am clear and straightforward</label>
+                    <label><input type="radio" name="q10" value="Empathetic"> I focus on how others feel</label>
+                    <label><input type="radio" name="q10" value="Reserved"> I only speak when necessary</label>
+                </div>
             </div>
 
             <button type="button" onclick="submitForm()">Submit</button>
@@ -125,7 +193,7 @@
                 queryParams.push(`${encodeURIComponent(pair[0])}=${encodeURIComponent(pair[1])}`);
             }
 
-            window.location.href = "results2.html?" + queryParams.join("&");
+            window.location.href = "results.html?" + queryParams.join("&");
         }
     </script>
 
