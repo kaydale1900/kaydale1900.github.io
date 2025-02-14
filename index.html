@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clifton Strengths Assessment</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?mountain,success') no-repeat center center/cover;
+            color: white;
+            padding: 100px 20px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            font-size: 18px;
+            padding: 15px 30px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .hero button:hover {
+            background-color: #218838;
+        }
+
+        /* Information Section */
+        .info {
+            background-color: white;
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+        }
+
+        .info h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .info p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Clifton Strengths Assessment</h1>
+        <p>Discover your core strengths with our scientifically designed strengths assessment.</p>
+        <button onclick="startAssessment()">Take the Assessment</button>
+    </div>
+
+    <!-- Info Section -->
+    <div class="info">
+        <h2>What is the Strengths Assessment?</h2>
+        <p>
+            This assessment is designed to help you understand your core personality traits and work tendencies. 
+            It consists of a series of carefully crafted questions that analyze different aspects of your approach to problem-solving, leadership, creativity, and decision-making.
+        </p>
+        <p>
+            At the end of the assessment, you’ll receive a unique four-letter code that encapsulates your strengths. 
+            This code represents a personalized summary of how you think, act, and contribute in various settings.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Clifton Strengths Assessment. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function startAssessment() {
+            window.location.href = "assessment.html";
+        }
+    </script>
+
+</body>
+</html>
