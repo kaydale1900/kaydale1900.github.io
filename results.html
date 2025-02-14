@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strengths Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Strengths Results</h1>
+        <div id="result">Calculating your strengths...</div>
+        <a href="index.html"><button>Retake Assessment</button></a>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            let params = new URLSearchParams(window.location.search);
+            let results = {};
+            params.forEach((value, key) => {
+                results[key] = value;
+            });
+            return results;
+        }
+
+        function displayResults() {
+            let answers = getQueryParams();
+            let strengths = {};
+
+            for (let key in answers) {
+                if (key !== "q3") {
+                    strengths[answers[key]] = (strengths[answers[key]] || 0) + 1;
+                }
+            }
+
+            let riskLevel = answers["q3"] || "1";
+            let sortedStrengths = Object.keys(strengths).sort((a, b) => strengths[b] - strengths[a]);
+
+            let resultText = `<h3>Your Strengths:</h3>`;
+            if (sortedStrengths.length > 0) {
+                resultText += `<p>Primary Strength: <strong>${sortedStrengths[0]}</strong></p>`;
+                if (sortedStrengths.length > 1) {
+                    resultText += `<p>Secondary Strength: <strong>${sortedStrengths[1]}</strong></p>`;
+                }
+            }
+            resultText += `<p>Risk-Taking Level: <strong>${riskLevel}</strong> (1-5)</p>`;
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+
+        displayResults();
+    </script>
+
+</body>
+</html>
