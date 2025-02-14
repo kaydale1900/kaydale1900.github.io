@@ -19,6 +19,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
         h1 {
             color: #333;
@@ -27,14 +28,21 @@
             margin-top: 20px;
             font-weight: bold;
             color: #333;
+            font-size: 24px;
+        }
+        #description {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #555;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Your Skills Assessment Results</h1>
-        <div id="result">Processing your results...</div>
+        <h1>Your Strengths Code</h1>
+        <div id="result">Processing...</div>
+        <div id="description"></div>
         <a href="index.html"><button>Retake Assessment</button></a>
     </div>
 
@@ -48,26 +56,39 @@
             return results;
         }
 
-        function displayResults() {
-            let answers = getQueryParams();
-            let strengths = {};
-
-            for (let key in answers) {
-                if (key !== "q5") {
-                    strengths[answers[key]] = (strengths[answers[key]] || 0) + 1;
+        function getTopCategory(categories, options) {
+            for (let option of options) {
+                if (categories[option]) {
+                    return option;
                 }
             }
+            return options[0]; // Default
+        }
 
-            let riskLevel = answers["q5"] || "1";
-            let sortedStrengths = Object.keys(strengths).sort((a, b) => strengths[b] - strengths[a]);
+        function displayResults() {
+            let answers = getQueryParams();
+            let categories = {};
 
-            let resultText = `<h3>Your Key Strengths:</h3>`;
-            sortedStrengths.forEach((strength, index) => {
-                resultText += `<p>${index + 1}. <strong>${strength}</strong></p>`;
-            });
-            resultText += `<p>Risk-Taking Level: <strong>${riskLevel}</strong> (1-5)</p>`;
+            for (let key in answers) {
+                categories[answers[key]] = (categories[answers[key]] || 0) + 1;
+            }
 
-            document.getElementById("result").innerHTML = resultText;
+            // Define L, G, B, T category options
+            let L_options = ["Logical", "Leader", "Listener", "Loyal"];
+            let G_options = ["Go-getter", "Grounded", "Generous", "Goal-Oriented"];
+            let B_options = ["Bold", "Balanced", "Builder", "Brainy"];
+            let T_options = ["Tactical", "Thoughtful", "Tenacious", "Team-Oriented"];
+
+            let L = getTopCategory(categories, L_options);
+            let G = getTopCategory(categories, G_options);
+            let B = getTopCategory(categories, B_options);
+            let T = getTopCategory(categories, T_options);
+
+            let resultCode = `${L.charAt(0)}${G.charAt(0)}${B.charAt(0)}${T.charAt(0)}`;
+            let fullDescription = `${L}, ${G}, ${B}, and ${T}`;
+
+            document.getElementById("result").innerHTML = `Your Strengths Code: <strong>${resultCode}</strong>`;
+            document.getElementById("description").innerHTML = `You are <strong>${fullDescription}</strong>.`;
         }
 
         displayResults();
