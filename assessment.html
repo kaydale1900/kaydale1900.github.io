@@ -3,111 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comprehensive Skills Assessment</title>
+    <title>Strengths Assessment</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
+            color: #333;
         }
+
         .container {
             background: white;
             max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            text-align: left;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
         }
+
         h1 {
-            color: #333;
-            text-align: center;
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #2c3e50;
         }
+
         .question {
-            margin: 20px 0;
+            margin: 25px 0;
+            font-size: 20px;
+            font-weight: bold;
         }
+
         .options {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
         }
-        button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 15px;
-            border: none;
+
+        .options label {
+            font-size: 18px;
+            margin: 8px 0;
             cursor: pointer;
-            margin-top: 20px;
-            font-size: 16px;
+        }
+
+        input[type="range"] {
             width: 100%;
         }
+
+        button {
+            font-size: 20px;
+            padding: 15px 30px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
         button:hover {
             background-color: #218838;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            height: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: width 0.3s ease-in-out;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Comprehensive Skills Assessment</h1>
+        <h1>Strengths Assessment</h1>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
         <form id="assessmentForm">
             
-            <!-- Problem-Solving -->
+            <!-- Question 1 -->
             <div class="question">
-                <p>1. How do you approach complex problems?</p>
+                <p>1. How do you handle problem-solving?</p>
                 <div class="options">
-                    <label><input type="radio" name="q1" value="Analytical Thinker"> I break them into smaller parts</label>
-                    <label><input type="radio" name="q1" value="Innovative Thinker"> I look for creative solutions</label>
-                    <label><input type="radio" name="q1" value="Practical Thinker"> I find the fastest workable solution</label>
+                    <label><input type="radio" name="q1" value="Logical"> I analyze logically</label>
+                    <label><input type="radio" name="q1" value="Creative"> I find creative solutions</label>
+                    <label><input type="radio" name="q1" value="Empathetic"> I consider people’s emotions</label>
                 </div>
             </div>
 
-            <!-- Leadership -->
+            <!-- Question 2 -->
             <div class="question">
-                <p>2. How do you feel about taking charge in a group?</p>
+                <p>2. How do you prefer to work in a team?</p>
                 <div class="options">
-                    <label><input type="radio" name="q2" value="Leader"> I naturally take the lead</label>
-                    <label><input type="radio" name="q2" value="Supporter"> I prefer to support others</label>
-                    <label><input type="radio" name="q2" value="Observer"> I prefer to let others take the lead</label>
+                    <label><input type="radio" name="q2" value="Leader"> I take leadership roles</label>
+                    <label><input type="radio" name="q2" value="Collaborator"> I work well with others</label>
+                    <label><input type="radio" name="q2" value="Independent"> I prefer working alone</label>
                 </div>
             </div>
 
-            <!-- Teamwork -->
+            <!-- Risk-taking question -->
             <div class="question">
-                <p>3. How do you contribute in a team setting?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="Strategist"> I organize and strategize</label>
-                    <label><input type="radio" name="q3" value="Collaborator"> I communicate effectively</label>
-                    <label><input type="radio" name="q3" value="Problem-Solver"> I resolve conflicts and challenges</label>
-                </div>
-            </div>
-
-            <!-- Creativity -->
-            <div class="question">
-                <p>4. How do you generate ideas?</p>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="Visionary"> I think outside the box</label>
-                    <label><input type="radio" name="q4" value="Logical Thinker"> I improve existing ideas logically</label>
-                    <label><input type="radio" name="q4" value="Experimentalist"> I test and iterate multiple ideas</label>
-                </div>
-            </div>
-
-            <!-- Risk-Taking -->
-            <div class="question">
-                <p>5. How comfortable are you with taking risks? (1 = Risk-Averse, 5 = High Risk-Taker)</p>
-                <input type="range" name="q5" min="1" max="5">
-            </div>
-
-            <!-- Emotional Intelligence -->
-            <div class="question">
-                <p>6. How do you handle emotional situations?</p>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="Empathetic"> I prioritize understanding emotions</label>
-                    <label><input type="radio" name="q6" value="Logical"> I keep emotions out of decisions</label>
-                    <label><input type="radio" name="q6" value="Balanced"> I balance logic and empathy</label>
-                </div>
+                <p>3. How comfortable are you with taking risks? (1 = Risk-Averse, 5 = High Risk-Taker)</p>
+                <input type="range" name="q3" min="1" max="5">
             </div>
 
             <button type="button" onclick="submitForm()">Submit</button>
