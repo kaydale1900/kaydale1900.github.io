@@ -3,37 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills Assessment Results</title>
+    <title>Your Strengths Code</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             text-align: center;
+            color: #333;
         }
+
         .container {
             background: white;
             max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
         }
+
         h1 {
-            color: #333;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
         }
+
         #result {
-            margin-top: 20px;
+            font-size: 48px;
             font-weight: bold;
-            color: #333;
-            font-size: 24px;
+            color: #28a745;
+            margin-top: 20px;
+            letter-spacing: 5px;
+            animation: fadeIn 1s ease-in-out;
         }
+
         #description {
-            margin-top: 10px;
-            font-size: 18px;
+            margin-top: 15px;
+            font-size: 20px;
             color: #555;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        button {
+            font-size: 18px;
+            padding: 15px 30px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 30px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -43,7 +74,7 @@
         <h1>Your Strengths Code</h1>
         <div id="result">Processing...</div>
         <div id="description"></div>
-        <a href="assessment.html"><button>Retake Assessment</button></a>
+        <a href="index.html"><button>Retake Assessment</button></a>
     </div>
 
     <script>
@@ -56,39 +87,22 @@
             return results;
         }
 
-        function getTopCategory(categories, options) {
-            for (let option of options) {
-                if (categories[option]) {
-                    return option;
-                }
-            }
-            return options[0]; // Default
-        }
-
         function displayResults() {
             let answers = getQueryParams();
-            let categories = {};
+            let strengths = {
+                L: ["Logical", "Leader", "Listener"],
+                G: ["Go-getter", "Grounded", "Generous"],
+                B: ["Bold", "Balanced", "Builder"],
+                T: ["Tactical", "Thoughtful", "Tenacious"]
+            };
 
-            for (let key in answers) {
-                categories[answers[key]] = (categories[answers[key]] || 0) + 1;
-            }
+            let L = strengths.L[Math.floor(Math.random() * strengths.L.length)];
+            let G = strengths.G[Math.floor(Math.random() * strengths.G.length)];
+            let B = strengths.B[Math.floor(Math.random() * strengths.B.length)];
+            let T = strengths.T[Math.floor(Math.random() * strengths.T.length)];
 
-            // Define L, G, B, T category options
-            let L_options = ["Logical", "Leader", "Listener", "Loyal"];
-            let G_options = ["Go-getter", "Grounded", "Generous", "Goal-Oriented"];
-            let B_options = ["Bold", "Balanced", "Builder", "Brainy"];
-            let T_options = ["Tactical", "Thoughtful", "Tenacious", "Team-Oriented"];
-
-            let L = getTopCategory(categories, L_options);
-            let G = getTopCategory(categories, G_options);
-            let B = getTopCategory(categories, B_options);
-            let T = getTopCategory(categories, T_options);
-
-            let resultCode = `${L.charAt(0)}${G.charAt(0)}${B.charAt(0)}${T.charAt(0)}`;
-            let fullDescription = `${L}, ${G}, ${B}, and ${T}`;
-
-            document.getElementById("result").innerHTML = `Your Strengths Code: <strong>${resultCode}</strong>`;
-            document.getElementById("description").innerHTML = `You are <strong>${fullDescription}</strong>.`;
+            document.getElementById("result").innerText = `${L[0]}${G[0]}${B[0]}${T[0]}`;
+            document.getElementById("description").innerHTML = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
         }
 
         displayResults();
