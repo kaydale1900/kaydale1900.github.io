@@ -1,5 +1,0 @@
----
-layout: spec
----
-
-Testing
