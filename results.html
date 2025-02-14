@@ -1,27 +1,115 @@
-<script>
-    function generateLGBTCode() {
-        const words = {
-            L: ["Leader", "Logical", "Loyal", "Luminous"],
-            G: ["Go-getter", "Grounded", "Gracious", "Goal-Oriented"],
-            B: ["Bold", "Balanced", "Brilliant", "Brainy"],
-            T: ["Tactical", "Talented", "Tenacious", "Thoughtful"]
-        };
-
-        function getRandomWord(category) {
-            return words[category][Math.floor(Math.random() * words[category].length)];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Strengths Code</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        let L = getRandomWord("L");
-        let G = getRandomWord("G");
-        let B = getRandomWord("B");
-        let T = getRandomWord("T");
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
+        }
 
-        let resultCode = `${L[0]}${G[0]}${B[0]}${T[0]}`;
-        let fullDescription = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
 
-        document.getElementById("result").innerText = resultCode;
-        document.getElementById("description").innerHTML = fullDescription;
-    }
+        .result-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #f8f9fa;
+            text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
+            animation: glow 2s infinite alternate;
+        }
 
-    generateLGBTCode();
-</script>
+        #description {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #f8f9fa;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 12px 25px;
+            background-color: #ffb400;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Strengths Code</h1>
+        <div class="result-box" id="result">LGBT</div>
+        <div id="description">Generating your unique code...</div>
+        <a href="index.html"><button>Retake Assessment</button></a>
+    </div>
+
+    <script>
+        function generateLGBTCode() {
+            const words = {
+                L: ["Leader", "Logical", "Loyal", "Luminous"],
+                G: ["Go-getter", "Grounded", "Gracious", "Goal-Oriented"],
+                B: ["Bold", "Balanced", "Brilliant", "Brainy"],
+                T: ["Tactical", "Talented", "Tenacious", "Thoughtful"]
+            };
+
+            function getRandomWord(category) {
+                return words[category][Math.floor(Math.random() * words[category].length)];
+            }
+
+            let L = getRandomWord("L");
+            let G = getRandomWord("G");
+            let B = getRandomWord("B");
+            let T = getRandomWord("T");
+
+            let resultCode = `${L[0]}${G[0]}${B[0]}${T[0]}`;
+            let fullDescription = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
+
+            document.getElementById("result").innerText = resultCode;
+            document.getElementById("description").innerHTML = fullDescription;
+        }
+
+        generateLGBTCode();
+    </script>
+
+</body>
+</html>
