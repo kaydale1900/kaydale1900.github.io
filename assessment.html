@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strengths Assessment</title>
+    <title>Comprehensive Skills Assessment</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,18 +14,19 @@
         }
         .container {
             background: white;
-            max-width: 600px;
+            max-width: 800px;
             margin: auto;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
         h1 {
             color: #333;
+            text-align: center;
         }
         .question {
             margin: 20px 0;
-            text-align: left;
         }
         .options {
             display: flex;
@@ -40,6 +41,7 @@
             cursor: pointer;
             margin-top: 20px;
             font-size: 16px;
+            width: 100%;
         }
         button:hover {
             background-color: #218838;
@@ -49,42 +51,62 @@
 <body>
 
     <div class="container">
-        <h1>Strengths Assessment</h1>
+        <h1>Comprehensive Skills Assessment</h1>
         <form id="assessmentForm">
             
-            <!-- Question 1 -->
+            <!-- Problem-Solving -->
             <div class="question">
-                <p>1. How do you handle problem-solving?</p>
+                <p>1. How do you approach complex problems?</p>
                 <div class="options">
-                    <label><input type="radio" name="q1" value="Logical Thinker"> I analyze logically</label>
-                    <label><input type="radio" name="q1" value="Creative Thinker"> I find creative solutions</label>
-                    <label><input type="radio" name="q1" value="Empathetic Thinker"> I consider people’s emotions</label>
+                    <label><input type="radio" name="q1" value="Analytical Thinker"> I break them into smaller parts</label>
+                    <label><input type="radio" name="q1" value="Innovative Thinker"> I look for creative solutions</label>
+                    <label><input type="radio" name="q1" value="Practical Thinker"> I find the fastest workable solution</label>
                 </div>
             </div>
 
-            <!-- Question 2 -->
+            <!-- Leadership -->
             <div class="question">
-                <p>2. How do you prefer to work in a team?</p>
+                <p>2. How do you feel about taking charge in a group?</p>
                 <div class="options">
-                    <label><input type="radio" name="q2" value="Leader"> I take leadership roles</label>
-                    <label><input type="radio" name="q2" value="Collaborator"> I work well with others</label>
-                    <label><input type="radio" name="q2" value="Independent"> I prefer working alone</label>
+                    <label><input type="radio" name="q2" value="Leader"> I naturally take the lead</label>
+                    <label><input type="radio" name="q2" value="Supporter"> I prefer to support others</label>
+                    <label><input type="radio" name="q2" value="Observer"> I prefer to let others take the lead</label>
                 </div>
             </div>
 
-            <!-- Question 3 -->
+            <!-- Teamwork -->
             <div class="question">
-                <p>3. How comfortable are you with taking risks? (1 = Risk-Averse, 5 = High Risk-Taker)</p>
-                <input type="range" name="q3" min="1" max="5">
+                <p>3. How do you contribute in a team setting?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="Strategist"> I organize and strategize</label>
+                    <label><input type="radio" name="q3" value="Collaborator"> I communicate effectively</label>
+                    <label><input type="radio" name="q3" value="Problem-Solver"> I resolve conflicts and challenges</label>
+                </div>
             </div>
 
-            <!-- Question 4 -->
+            <!-- Creativity -->
             <div class="question">
-                <p>4. How do you handle failure?</p>
+                <p>4. How do you generate ideas?</p>
                 <div class="options">
-                    <label><input type="radio" name="q4" value="Resilient"> I learn from it and try again</label>
-                    <label><input type="radio" name="q4" value="Cautious"> I avoid risky situations</label>
-                    <label><input type="radio" name="q4" value="Motivated"> I get more determined</label>
+                    <label><input type="radio" name="q4" value="Visionary"> I think outside the box</label>
+                    <label><input type="radio" name="q4" value="Logical Thinker"> I improve existing ideas logically</label>
+                    <label><input type="radio" name="q4" value="Experimentalist"> I test and iterate multiple ideas</label>
+                </div>
+            </div>
+
+            <!-- Risk-Taking -->
+            <div class="question">
+                <p>5. How comfortable are you with taking risks? (1 = Risk-Averse, 5 = High Risk-Taker)</p>
+                <input type="range" name="q5" min="1" max="5">
+            </div>
+
+            <!-- Emotional Intelligence -->
+            <div class="question">
+                <p>6. How do you handle emotional situations?</p>
+                <div class="options">
+                    <label><input type="radio" name="q6" value="Empathetic"> I prioritize understanding emotions</label>
+                    <label><input type="radio" name="q6" value="Logical"> I keep emotions out of decisions</label>
+                    <label><input type="radio" name="q6" value="Balanced"> I balance logic and empathy</label>
                 </div>
             </div>
 
