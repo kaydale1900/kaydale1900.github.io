@@ -7,105 +7,108 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
             margin: 0;
             padding: 0;
             text-align: center;
-            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            background: white;
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
         }
 
         h1 {
-            font-size: 40px;
-            margin-bottom: 20px;
-            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
-        #result {
+        .result-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
             font-size: 48px;
             font-weight: bold;
-            color: #28a745;
-            margin-top: 20px;
-            letter-spacing: 5px;
-            animation: fadeIn 1s ease-in-out;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #f8f9fa;
+            text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
+            animation: glow 2s infinite alternate;
         }
 
         #description {
+            font-size: 18px;
             margin-top: 15px;
-            font-size: 20px;
-            color: #555;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            color: #f8f9fa;
         }
 
         button {
             font-size: 18px;
-            padding: 15px 30px;
-            background-color: #28a745;
+            padding: 12px 25px;
+            background-color: #ffb400;
             border: none;
-            color: white;
+            color: #333;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 8px;
             margin-top: 30px;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
         }
 
         button:hover {
-            background-color: #218838;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
         }
+
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Your Strengths Code</h1>
-        <div id="result">Processing...</div>
-        <div id="description"></div>
-        <a href="assessment.html"><button>Retake Assessment</button></a>
+        <div class="result-box" id="result">LGBT</div>
+        <div id="description">Generating your unique code...</div>
+        <a href="index.html"><button>Retake Assessment</button></a>
     </div>
 
     <script>
-        function getQueryParams() {
-            let params = new URLSearchParams(window.location.search);
-            let results = {};
-            params.forEach((value, key) => {
-                results[key] = value;
-            });
-            return results;
-        }
-
-        function displayResults() {
-            let answers = getQueryParams();
-            let strengths = {
-                L: ["Logical", "Leader", "Listener"],
-                G: ["Go-getter", "Grounded", "Generous"],
-                B: ["Bold", "Balanced", "Builder"],
-                T: ["Tactical", "Thoughtful", "Tenacious"]
+        function generateLGBTCode() {
+            const words = {
+                L: ["Leader", "Logical", "Loyal", "Luminous"],
+                G: ["Go-getter", "Grounded", "Gracious", "Goal-Oriented"],
+                B: ["Bold", "Balanced", "Brilliant", "Brainy"],
+                T: ["Tactical", "Talented", "Tenacious", "Thoughtful"]
             };
 
-            let L = strengths.L[Math.floor(Math.random() * strengths.L.length)];
-            let G = strengths.G[Math.floor(Math.random() * strengths.G.length)];
-            let B = strengths.B[Math.floor(Math.random() * strengths.B.length)];
-            let T = strengths.T[Math.floor(Math.random() * strengths.T.length)];
+            function getRandomWord(category) {
+                return words[category][Math.floor(Math.random() * words[category].length)];
+            }
 
-            document.getElementById("result").innerText = `${L[0]}${G[0]}${B[0]}${T[0]}`;
-            document.getElementById("description").innerHTML = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
+            let L = getRandomWord("L");
+            let G = getRandomWord("G");
+            let B = getRandomWord("B");
+            let T = getRandomWord("T");
+
+            let resultCode = `${L[0]}${G[0]}${B[0]}${T[0]}`;
+            let fullDescription = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
+
+            document.getElementById("result").innerText = resultCode;
+            document.getElementById("description").innerHTML = fullDescription;
         }
 
-        displayResults();
+        generateLGBTCode();
     </script>
 
 </body>
