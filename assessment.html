@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strengths Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .question {
+            margin: 20px 0;
+            text-align: left;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Strengths Assessment</h1>
+        <form id="assessmentForm">
+            
+            <!-- Question 1 -->
+            <div class="question">
+                <p>1. How do you handle problem-solving?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="Logical Thinker"> I analyze logically</label>
+                    <label><input type="radio" name="q1" value="Creative Thinker"> I find creative solutions</label>
+                    <label><input type="radio" name="q1" value="Empathetic Thinker"> I consider people’s emotions</label>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="question">
+                <p>2. How do you prefer to work in a team?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="Leader"> I take leadership roles</label>
+                    <label><input type="radio" name="q2" value="Collaborator"> I work well with others</label>
+                    <label><input type="radio" name="q2" value="Independent"> I prefer working alone</label>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="question">
+                <p>3. How comfortable are you with taking risks?</p>
+                <input type="range" name="q3" min="1" max="5">
+                <p>1 (Risk-Averse) - 5 (High Risk-Taker)</p>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="question">
+                <p>4. How do you handle failure?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="Resilient"> I learn from it and try again</label>
+                    <label><input type="radio" name="q4" value="Cautious"> I avoid risky situations</label>
+                    <label><input type="radio" name="q4" value="Motivated"> I get more determined</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="calculateStrengths()">Submit</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateStrengths() {
+            let form = document.getElementById("assessmentForm");
+            let answers = new FormData(form);
+            let strengths = {};
+
+            for (let pair of answers.entries()) {
+                if (pair[0] !== "q3") { 
+                    strengths[pair[1]] = (strengths[pair[1]] || 0) + 1;
+                }
+            }
+
+            let riskLevel = parseInt(answers.get("q3")) || 1;
+            let dominantStrengths = Object.keys(strengths).sort((a, b) => strengths[b] - strengths[a]);
+
+            let resultText = `<h3>Your Strengths:</h3>`;
+            if (dominantStrengths.length > 0) {
+                resultText += `<p>Primary Strength: <strong>${dominantStrengths[0]}</strong></p>`;
+                if (dominantStrengths.length > 1) {
+                    resultText += `<p>Secondary Strength: <strong>${dominantStrengths[1]}</strong></p>`;
+                }
+            }
+            resultText += `<p>Risk-Taking Level: <strong>${riskLevel}</strong> (1-5)</p>`;
+
+            document.getElementById("result").innerHTML = resultText;
+        }
+    </script>
+
+</body>
+</html>
