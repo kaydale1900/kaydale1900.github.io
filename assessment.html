@@ -44,11 +44,6 @@
         button:hover {
             background-color: #218838;
         }
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -79,9 +74,8 @@
 
             <!-- Question 3 -->
             <div class="question">
-                <p>3. How comfortable are you with taking risks?</p>
+                <p>3. How comfortable are you with taking risks? (1 = Risk-Averse, 5 = High Risk-Taker)</p>
                 <input type="range" name="q3" min="1" max="5">
-                <p>1 (Risk-Averse) - 5 (High Risk-Taker)</p>
             </div>
 
             <!-- Question 4 -->
@@ -94,37 +88,21 @@
                 </div>
             </div>
 
-            <button type="button" onclick="calculateStrengths()">Submit</button>
+            <button type="button" onclick="submitForm()">Submit</button>
         </form>
-
-        <div id="result"></div>
     </div>
 
     <script>
-        function calculateStrengths() {
+        function submitForm() {
             let form = document.getElementById("assessmentForm");
             let answers = new FormData(form);
-            let strengths = {};
+            let queryParams = [];
 
             for (let pair of answers.entries()) {
-                if (pair[0] !== "q3") { 
-                    strengths[pair[1]] = (strengths[pair[1]] || 0) + 1;
-                }
+                queryParams.push(`${encodeURIComponent(pair[0])}=${encodeURIComponent(pair[1])}`);
             }
 
-            let riskLevel = parseInt(answers.get("q3")) || 1;
-            let dominantStrengths = Object.keys(strengths).sort((a, b) => strengths[b] - strengths[a]);
-
-            let resultText = `<h3>Your Strengths:</h3>`;
-            if (dominantStrengths.length > 0) {
-                resultText += `<p>Primary Strength: <strong>${dominantStrengths[0]}</strong></p>`;
-                if (dominantStrengths.length > 1) {
-                    resultText += `<p>Secondary Strength: <strong>${dominantStrengths[1]}</strong></p>`;
-                }
-            }
-            resultText += `<p>Risk-Taking Level: <strong>${riskLevel}</strong> (1-5)</p>`;
-
-            document.getElementById("result").innerHTML = resultText;
+            window.location.href = "results.html?" + queryParams.join("&");
         }
     </script>
 
