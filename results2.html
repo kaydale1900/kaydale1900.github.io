@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Strengths Code</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: #f8f9fa;
+            text-shadow: 0px 0px 20px rgba(255, 255, 255, 0.6);
+            animation: glow 2s infinite alternate;
+        }
+
+        #description {
+            font-size: 18px;
+            margin-top: 15px;
+            color: #f8f9fa;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 12px 25px;
+            background-color: #ffb400;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Your Strengths Code</h1>
+        <div class="result-box" id="result">XXXX</div>
+        <div id="description">Generating your unique code...</div>
+        <a href="assessments.html"><button>Retake Assessment</button></a>
+    </div>
+
+    <script>
+        function generateRandomCode() {
+            const words = ["Leader", "Strategic", "Brilliant", "Visionary", "Resilient", "Insightful", 
+                           "Genius", "Bold", "Determined", "Driven", "Tactical", "Intuitive", "Empowered", "Innovative"];
+
+            function getRandomWord() {
+                return words[Math.floor(Math.random() * words.length)];
+            }
+
+            let word1 = getRandomWord();
+            let word2 = getRandomWord();
+            let word3 = getRandomWord();
+            let word4 = getRandomWord();
+
+            while (word1 === word2 || word1 === word3 || word1 === word4 || 
+                   word2 === word3 || word2 === word4 || word3 === word4) {
+                word2 = getRandomWord();
+                word3 = getRandomWord();
+                word4 = getRandomWord();
+            }
+
+            let resultCode = `${word1[0]}${word2[0]}${word3[0]}${word4[0]}`;
+            let fullDescription = `You are <strong>${word1}, ${word2}, ${word3}, and ${word4}</strong>.`;
+
+            document.getElementById("result").innerText = resultCode;
+            document.getElementById("description").innerHTML = fullDescription;
+        }
+
+        generateRandomCode();
+    </script>
+
+</body>
+</html>
