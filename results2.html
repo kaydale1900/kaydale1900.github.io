@@ -85,20 +85,28 @@
 
     <script>
         function generateRandomCode() {
-            const words = {
-                L: ["Leader", "Logical", "Luminous", "Loyal"],
-                G: ["Genius", "Grounded", "Gracious", "Goal-Oriented"],
-                B: ["Brilliant", "Bold", "Balanced", "Brainy"],
-                T: ["Tactical", "Talented", "Tenacious", "Thoughtful"]
-            };
+            const words = ["Leader", "Strategic", "Brilliant", "Visionary", "Resilient", "Insightful", "Genius", "Bold", "Determined", "Driven", "Tactical", "Intuitive", "Empowered", "Innovative"];
 
-            let L = words.L[Math.floor(Math.random() * words.L.length)];
-            let G = words.G[Math.floor(Math.random() * words.G.length)];
-            let B = words.B[Math.floor(Math.random() * words.B.length)];
-            let T = words.T[Math.floor(Math.random() * words.T.length)];
+            function getRandomWord() {
+                return words[Math.floor(Math.random() * words.length)];
+            }
 
-            document.getElementById("result").innerText = `${L[0]}${G[0]}${B[0]}${T[0]}`;
-            document.getElementById("description").innerHTML = `You are <strong>${L}, ${G}, ${B}, and ${T}</strong>.`;
+            let word1 = getRandomWord();
+            let word2 = getRandomWord();
+            let word3 = getRandomWord();
+            let word4 = getRandomWord();
+
+            while (word1 === word2 || word1 === word3 || word1 === word4 || word2 === word3 || word2 === word4 || word3 === word4) {
+                word2 = getRandomWord();
+                word3 = getRandomWord();
+                word4 = getRandomWord();
+            }
+
+            let resultCode = `${word1[0]}${word2[0]}${word3[0]}${word4[0]}`;
+            let fullDescription = `You are <strong>${word1}, ${word2}, ${word3}, and ${word4}</strong>.`;
+
+            document.getElementById("result").innerText = resultCode;
+            document.getElementById("description").innerHTML = fullDescription;
         }
 
         generateRandomCode();
